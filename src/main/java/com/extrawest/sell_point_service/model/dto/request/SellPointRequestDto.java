@@ -19,5 +19,5 @@ public class SellPointRequestDto {
     private String name;
     @Positive
     private float mark;
-    private boolean isOfflineShop;
+    private boolean offlineShop;
 }

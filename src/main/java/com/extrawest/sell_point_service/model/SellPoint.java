@@ -22,5 +22,5 @@ public class SellPoint {
     private String address;
     private String name;
     private float mark;
-    private boolean isOfflineShop;
+    private boolean OfflineShop;
 }
