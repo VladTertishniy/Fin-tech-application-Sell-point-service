@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping(PathUtil.SELL_POINTS_PATH)
@@ -41,8 +42,18 @@ public class SellPointController {
         return ResponseEntity.ok(sellPointService.getById(id));
     }
 
-    @GetMapping(PathUtil.GET_ALL_PATH)
-    public ResponseEntity<Page<SellPointResponseDto>> getAll(@PageableDefault Pageable pageable) {
+    @GetMapping(PathUtil.GET_ALL_ON_PAGE_PATH)
+    public ResponseEntity<Page<SellPointResponseDto>> getAllOnPage(@PageableDefault Pageable pageable) {
         return ResponseEntity.ok(sellPointService.getAll(pageable));
+    }
+
+    @GetMapping(PathUtil.GET_ALL_PATH)
+    public ResponseEntity<List<SellPointResponseDto>> getAll() {
+        return ResponseEntity.ok(sellPointService.getAll());
+    }
+
+    @GetMapping(PathUtil.IS_SELL_POINT_EXIST_PATH)
+    public ResponseEntity<Boolean> isSellPointExist(@PathVariable Long id) {
+        return ResponseEntity.ok(sellPointService.isSellPointExist(id));
     }
 }
